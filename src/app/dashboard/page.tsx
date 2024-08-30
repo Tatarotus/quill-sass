@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 const Page = async () => {
   const { getUser } = getKindeServerSession();
   const user = getUser();
+  console.log("user", user);
 
   if (!user || !user.id) redirect("/auth-callback?origin=dashboard");
 
@@ -20,4 +21,4 @@ const Page = async () => {
   return <Dashboard />;
 };
 
-export default Dashboard;
+export default Page;

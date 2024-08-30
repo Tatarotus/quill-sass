@@ -19,7 +19,7 @@ const Page = () => {
 
     if (isError) {
       if (error.message === "UNAUTHORIZED") {
-        router.push("/sign-in");
+        router.push("/api/auth/login");
       }
     }
   }, [origin, isSuccess, data, error, isError, router]);
