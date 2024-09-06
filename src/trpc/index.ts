@@ -41,7 +41,6 @@ export const appRouter = router({
       },
     });
   }),
-<<<<<<< HEAD
   getFile: privateProcedure
     .input(z.object({ key: z.string() }))
     .mutation(async ({ ctx, input }) => {
@@ -57,8 +56,6 @@ export const appRouter = router({
       }
       return file;
     }),
-=======
->>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
   deleteFile: privateProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
