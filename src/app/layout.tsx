@@ -4,7 +4,10 @@ import "./globals.css";
 import { cn } from "./lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Providers";
+<<<<<<< HEAD
 import { Toaster } from "@/components/ui/toaster";
+=======
+>>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
 
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -29,7 +32,10 @@ export default function RootLayout({
             inter.className
           )}
         >
+<<<<<<< HEAD
           <Toaster />
+=======
+>>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
           <Navbar />
           {children}
         </body>

@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import Dropzone from "react-dropzone";
 import { Cloud, File } from "lucide-react";
 import { Progress } from "./ui/progress";
+<<<<<<< HEAD
 import { useUploadThing } from "@/app/lib/uploadthing";
 import { useToast } from "./ui/use-toast";
 import { trpc } from "@/app/_trpc/client";
@@ -25,6 +26,12 @@ const UploadDropzone = () => {
     retry: true,
     retryDelay: 500,
   });
+=======
+
+const UploadDropzone = () => {
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
+>>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
 
   const startSimulatedProgress = () => {
     setUploadProgress(0);
@@ -44,6 +51,7 @@ const UploadDropzone = () => {
     <Dropzone
       multiple={false}
       onDrop={async (acceptedFile) => {
+<<<<<<< HEAD
         setIsUploading(true);
 
         const progressInterval = startSimulatedProgress();
@@ -75,6 +83,16 @@ const UploadDropzone = () => {
         setUploadProgress(100);
 
         startPolling({ key });
+=======
+        console.log(acceptedFile);
+        setIsUploading(true);
+        const progressInterval = startSimulatedProgress();
+
+        //handle file upload
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        clearInterval(progressInterval);
+        setUploadProgress(100);
+>>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
       }}
     >
       {({ getRootProps, getInputProps, acceptedFiles }) => (
@@ -115,6 +133,7 @@ const UploadDropzone = () => {
                   </div>
                 ) : null}
               </div>
+<<<<<<< HEAD
 
               <input
                 {...getInputProps()}
@@ -122,6 +141,8 @@ const UploadDropzone = () => {
                 id="dropzone-file"
                 className="hidden"
               />
+=======
+>>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
             </label>
           </div>
         </div>

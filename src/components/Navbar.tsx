@@ -3,6 +3,7 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import { buttonVariants } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
+<<<<<<< HEAD
 import {
   getKindeServerSession,
   LoginLink,
@@ -13,6 +14,12 @@ const Navbar = () => {
   const { getUser } = getKindeServerSession();
   const user = getUser();
 
+=======
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
+
+const Navbar = () => {
+  const user = false;
+>>>>>>> aeb3dfd1d9621167db90a6a11fc7b3a7450f328c
   return (
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
