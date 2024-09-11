@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "./ui/dialog";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Button } from "./ui/button";
 import Dropzone from "react-dropzone";
 import { Cloud, File, Loader2 } from "lucide-react";
@@ -10,9 +11,11 @@ import { useUploadThing } from "@/app/lib/uploadthing";
 import { useToast } from "./ui/use-toast";
 import { trpc } from "@/app/_trpc/client";
 import { useRouter } from "next/navigation";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 const UploadDropzone = () => {
   const router = useRouter();
+  const [uploadError, setUploadError] = useState(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const { toast } = useToast();
@@ -63,6 +66,8 @@ const UploadDropzone = () => {
         const res = await startUpload(acceptedFile);
 
         if (!res) {
+          setUploadError(true);
+          setUploadProgress(99);
           return toast({
             title: "Something went wrong",
             description: "Please try again later",
@@ -121,7 +126,11 @@ const UploadDropzone = () => {
                   <div className="w-full mt-4 max-w-xs-mx-auto">
                     <Progress
                       indicatorColor={
-                        uploadProgress === 100 ? "bg-green-500" : ""
+                        uploadError
+                          ? "bg-red-500"
+                          : uploadProgress === 100
+                            ? "bg-green-500"
+                            : ""
                       }
                       value={uploadProgress}
                       className="h-1 w-full bg-zinc-200"
@@ -166,6 +175,10 @@ const UploadButton = () => {
         <Button>Upload PDF</Button>
       </DialogTrigger>
       <DialogContent>
+        <VisuallyHidden.Root>
+          <DialogTitle>Upload button PDF</DialogTitle>
+          <DialogDescription>Upload your PDF here.</DialogDescription>
+        </VisuallyHidden.Root>
         <UploadDropzone />
       </DialogContent>
     </Dialog>
